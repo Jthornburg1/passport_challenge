@@ -17,6 +17,8 @@
 		B12ACBEA20CED27A00B57D19 /* PassportChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACBE920CED27A00B57D19 /* PassportChallengeTests.swift */; };
 		B12ACBF520CED27A00B57D19 /* PassportChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACBF420CED27A00B57D19 /* PassportChallengeUITests.swift */; };
 		B12ACC0820CED3D000B57D19 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B12ACC0720CED3D000B57D19 /* GoogleService-Info.plist */; };
+		B12ACC0B20CEE69E00B57D19 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B12ACC0A20CEE69D00B57D19 /* GoogleService-Info.plist */; };
+		B12ACC0D20CEF56E00B57D19 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACC0C20CEF56E00B57D19 /* Profile.swift */; };
 		CE0C042F07B5A329E4FEFD9C /* Pods_PassportChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E42A7065B22AD7679A149DD /* Pods_PassportChallengeUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,8 @@
 		B12ACBF420CED27A00B57D19 /* PassportChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportChallengeUITests.swift; sourceTree = "<group>"; };
 		B12ACBF620CED27A00B57D19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B12ACC0720CED3D000B57D19 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B12ACC0A20CEE69D00B57D19 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B12ACC0C20CEF56E00B57D19 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,7 @@
 				B12ACBDB20CED27A00B57D19 /* Assets.xcassets */,
 				B12ACBDD20CED27A00B57D19 /* LaunchScreen.storyboard */,
 				B12ACBE020CED27A00B57D19 /* Info.plist */,
+				B12ACC0A20CEE69D00B57D19 /* GoogleService-Info.plist */,
 			);
 			path = PassportChallenge;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 		B12ACC0220CED2DF00B57D19 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B12ACC0C20CEF56E00B57D19 /* Profile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -325,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B12ACBDF20CED27A00B57D19 /* LaunchScreen.storyboard in Resources */,
+				B12ACC0B20CEE69E00B57D19 /* GoogleService-Info.plist in Resources */,
 				B12ACBDC20CED27A00B57D19 /* Assets.xcassets in Resources */,
 				B12ACBDA20CED27800B57D19 /* Main.storyboard in Resources */,
 			);
@@ -432,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B12ACBD720CED27800B57D19 /* ViewController.swift in Sources */,
+				B12ACC0D20CEF56E00B57D19 /* Profile.swift in Sources */,
 				B12ACBD520CED27800B57D19 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
