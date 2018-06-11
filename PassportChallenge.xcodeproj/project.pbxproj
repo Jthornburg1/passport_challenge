@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4416C0942AAF7D99BDAA865C /* Pods_PassportChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B9B6173B4ACD0EC44BD186 /* Pods_PassportChallengeTests.framework */; };
+		83B1F03C01AB01E0DB0621D3 /* Pods_PassportChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E5704AF37E294A749E4F3FC /* Pods_PassportChallenge.framework */; };
 		B12ACBD520CED27800B57D19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACBD420CED27800B57D19 /* AppDelegate.swift */; };
 		B12ACBD720CED27800B57D19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACBD620CED27800B57D19 /* ViewController.swift */; };
 		B12ACBDA20CED27800B57D19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B12ACBD820CED27800B57D19 /* Main.storyboard */; };
@@ -14,6 +16,8 @@
 		B12ACBDF20CED27A00B57D19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B12ACBDD20CED27A00B57D19 /* LaunchScreen.storyboard */; };
 		B12ACBEA20CED27A00B57D19 /* PassportChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACBE920CED27A00B57D19 /* PassportChallengeTests.swift */; };
 		B12ACBF520CED27A00B57D19 /* PassportChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACBF420CED27A00B57D19 /* PassportChallengeUITests.swift */; };
+		B12ACC0820CED3D000B57D19 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B12ACC0720CED3D000B57D19 /* GoogleService-Info.plist */; };
+		CE0C042F07B5A329E4FEFD9C /* Pods_PassportChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E42A7065B22AD7679A149DD /* Pods_PassportChallengeUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4144216C78E7F37A243D9987 /* Pods-PassportChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassportChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PassportChallengeTests/Pods-PassportChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
+		48F611B4DCBE2C110C487C6D /* Pods-PassportChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassportChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PassportChallenge/Pods-PassportChallenge.debug.xcconfig"; sourceTree = "<group>"; };
+		5E5704AF37E294A749E4F3FC /* Pods_PassportChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PassportChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75F760C37B3E89F7EFD3F7E8 /* Pods-PassportChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassportChallengeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PassportChallengeTests/Pods-PassportChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		86B9B6173B4ACD0EC44BD186 /* Pods_PassportChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PassportChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E42A7065B22AD7679A149DD /* Pods_PassportChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PassportChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9314776FE4A1B2804290AFCD /* Pods-PassportChallengeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassportChallengeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PassportChallengeUITests/Pods-PassportChallengeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		960C76AEFF414D0D710BAC0E /* Pods-PassportChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassportChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-PassportChallenge/Pods-PassportChallenge.release.xcconfig"; sourceTree = "<group>"; };
+		A1091FAC6B392DA8642ADE66 /* Pods-PassportChallengeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassportChallengeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PassportChallengeUITests/Pods-PassportChallengeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B12ACBD120CED27800B57D19 /* PassportChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassportChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12ACBD420CED27800B57D19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B12ACBD620CED27800B57D19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +60,7 @@
 		B12ACBF020CED27A00B57D19 /* PassportChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PassportChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12ACBF420CED27A00B57D19 /* PassportChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportChallengeUITests.swift; sourceTree = "<group>"; };
 		B12ACBF620CED27A00B57D19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B12ACC0720CED3D000B57D19 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B1F03C01AB01E0DB0621D3 /* Pods_PassportChallenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4416C0942AAF7D99BDAA865C /* Pods_PassportChallengeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +84,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE0C042F07B5A329E4FEFD9C /* Pods_PassportChallengeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF062CB0DC7A9C7C9344EE9F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				48F611B4DCBE2C110C487C6D /* Pods-PassportChallenge.debug.xcconfig */,
+				960C76AEFF414D0D710BAC0E /* Pods-PassportChallenge.release.xcconfig */,
+				75F760C37B3E89F7EFD3F7E8 /* Pods-PassportChallengeTests.debug.xcconfig */,
+				4144216C78E7F37A243D9987 /* Pods-PassportChallengeTests.release.xcconfig */,
+				9314776FE4A1B2804290AFCD /* Pods-PassportChallengeUITests.debug.xcconfig */,
+				A1091FAC6B392DA8642ADE66 /* Pods-PassportChallengeUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B12ACBC820CED27800B57D19 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +111,8 @@
 				B12ACBE820CED27A00B57D19 /* PassportChallengeTests */,
 				B12ACBF320CED27A00B57D19 /* PassportChallengeUITests */,
 				B12ACBD220CED27800B57D19 /* Products */,
+				AF062CB0DC7A9C7C9344EE9F /* Pods */,
+				EE8947478B0E84C3DF4A86D5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,8 +129,13 @@
 		B12ACBD320CED27800B57D19 /* PassportChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				B12ACC0920CED95400B57D19 /* DB */,
+				B12ACC0620CED32500B57D19 /* Extensions */,
+				B12ACC0520CED31B00B57D19 /* Views */,
+				B12ACC0420CED30500B57D19 /* Cells */,
+				B12ACC0320CED2EC00B57D19 /* ViewControllers */,
+				B12ACC0220CED2DF00B57D19 /* Models */,
 				B12ACBD420CED27800B57D19 /* AppDelegate.swift */,
-				B12ACBD620CED27800B57D19 /* ViewController.swift */,
 				B12ACBD820CED27800B57D19 /* Main.storyboard */,
 				B12ACBDB20CED27A00B57D19 /* Assets.xcassets */,
 				B12ACBDD20CED27A00B57D19 /* LaunchScreen.storyboard */,
@@ -121,8 +158,62 @@
 			children = (
 				B12ACBF420CED27A00B57D19 /* PassportChallengeUITests.swift */,
 				B12ACBF620CED27A00B57D19 /* Info.plist */,
+				B12ACC0720CED3D000B57D19 /* GoogleService-Info.plist */,
 			);
 			path = PassportChallengeUITests;
+			sourceTree = "<group>";
+		};
+		B12ACC0220CED2DF00B57D19 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B12ACC0320CED2EC00B57D19 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B12ACBD620CED27800B57D19 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B12ACC0420CED30500B57D19 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B12ACC0520CED31B00B57D19 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B12ACC0620CED32500B57D19 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B12ACC0920CED95400B57D19 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		EE8947478B0E84C3DF4A86D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E5704AF37E294A749E4F3FC /* Pods_PassportChallenge.framework */,
+				86B9B6173B4ACD0EC44BD186 /* Pods_PassportChallengeTests.framework */,
+				8E42A7065B22AD7679A149DD /* Pods_PassportChallengeUITests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,9 +223,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B12ACBF920CED27A00B57D19 /* Build configuration list for PBXNativeTarget "PassportChallenge" */;
 			buildPhases = (
+				CE7CA29ED685C57EEDD4FDD9 /* [CP] Check Pods Manifest.lock */,
 				B12ACBCD20CED27800B57D19 /* Sources */,
 				B12ACBCE20CED27800B57D19 /* Frameworks */,
 				B12ACBCF20CED27800B57D19 /* Resources */,
+				AC1159F8141ABEE3E16B34DD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +242,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B12ACBFC20CED27A00B57D19 /* Build configuration list for PBXNativeTarget "PassportChallengeTests" */;
 			buildPhases = (
+				9DA92B1EB9A47F8C7130CC46 /* [CP] Check Pods Manifest.lock */,
 				B12ACBE120CED27A00B57D19 /* Sources */,
 				B12ACBE220CED27A00B57D19 /* Frameworks */,
 				B12ACBE320CED27A00B57D19 /* Resources */,
@@ -167,6 +261,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B12ACBFF20CED27A00B57D19 /* Build configuration list for PBXNativeTarget "PassportChallengeUITests" */;
 			buildPhases = (
+				57162E7E12583DE35E166FD6 /* [CP] Check Pods Manifest.lock */,
 				B12ACBEC20CED27A00B57D19 /* Sources */,
 				B12ACBED20CED27A00B57D19 /* Frameworks */,
 				B12ACBEE20CED27A00B57D19 /* Resources */,
@@ -246,10 +341,90 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B12ACC0820CED3D000B57D19 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		57162E7E12583DE35E166FD6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PassportChallengeUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9DA92B1EB9A47F8C7130CC46 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PassportChallengeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC1159F8141ABEE3E16B34DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PassportChallenge/Pods-PassportChallenge-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PassportChallenge/Pods-PassportChallenge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE7CA29ED685C57EEDD4FDD9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PassportChallenge-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B12ACBCD20CED27800B57D19 /* Sources */ = {
@@ -428,6 +603,7 @@
 		};
 		B12ACBFA20CED27A00B57D19 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48F611B4DCBE2C110C487C6D /* Pods-PassportChallenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -446,6 +622,7 @@
 		};
 		B12ACBFB20CED27A00B57D19 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 960C76AEFF414D0D710BAC0E /* Pods-PassportChallenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -464,6 +641,7 @@
 		};
 		B12ACBFD20CED27A00B57D19 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75F760C37B3E89F7EFD3F7E8 /* Pods-PassportChallengeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -485,6 +663,7 @@
 		};
 		B12ACBFE20CED27A00B57D19 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4144216C78E7F37A243D9987 /* Pods-PassportChallengeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -506,6 +685,7 @@
 		};
 		B12ACC0020CED27A00B57D19 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9314776FE4A1B2804290AFCD /* Pods-PassportChallengeUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -526,6 +706,7 @@
 		};
 		B12ACC0120CED27A00B57D19 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1091FAC6B392DA8642ADE66 /* Pods-PassportChallengeUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
