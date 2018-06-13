@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var segControlHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var segControl: UISegmentedControl!
     
+    var profiles = [Profile]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
@@ -23,6 +25,12 @@ class ViewController: UIViewController {
         segControlHeightConstraint.constant = 0
         tableView.delegate = self
         searchBar.delegate = self
+        let cellNib = UINib(nibName: "ProfileCell", bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: "ProfileCell")
+        FirebaseGet.shared.getProfiles { (profiles) in
+            self.profiles = profiles
+            self.tableView.reloadData()
+        }
     }
     func segControl(show: Bool) {
         let heightMetric: CGFloat = show ? 28 : 0
@@ -56,6 +64,9 @@ extension ViewController: UISearchBarDelegate {
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         segControl(show: false)
+        FirebaseGet.shared.getProfiles { (pr) in
+            
+        }
         searchBar.resignFirstResponder()
     }
 }

@@ -17,7 +17,7 @@ class Profile: NSObject {
     var gender: String?
     var image_url: String?
     
-    func from(dictionary: [String:AnyObject], id: Int) {
+    func from(dictionary: [String:AnyObject]) {
         let fields = ["gender","hobbies","image_url","name"]
         for field in fields {
             if let value = dictionary[field] as? String {
@@ -29,7 +29,11 @@ class Profile: NSObject {
                 self.age = intAge
             }
         }
-        self.id = id
+        if let id = dictionary["id"] {
+            if let intId = Int(String(describing: id)) {
+                self.id = intId
+            }
+        }
     }
     
     func hobbiesToArray() -> [String] {

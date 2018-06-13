@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4416C0942AAF7D99BDAA865C /* Pods_PassportChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B9B6173B4ACD0EC44BD186 /* Pods_PassportChallengeTests.framework */; };
 		83B1F03C01AB01E0DB0621D3 /* Pods_PassportChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E5704AF37E294A749E4F3FC /* Pods_PassportChallenge.framework */; };
+		B118892C20D0149100239638 /* FirebasePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118892B20D0149100239638 /* FirebasePost.swift */; };
+		B118892F20D0AC6500239638 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118892D20D0AC6500239638 /* ProfileCell.swift */; };
+		B118893020D0AC6500239638 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B118892E20D0AC6500239638 /* ProfileCell.xib */; };
 		B12ACBD520CED27800B57D19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACBD420CED27800B57D19 /* AppDelegate.swift */; };
 		B12ACBD720CED27800B57D19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACBD620CED27800B57D19 /* ViewController.swift */; };
 		B12ACBDA20CED27800B57D19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B12ACBD820CED27800B57D19 /* Main.storyboard */; };
@@ -19,6 +22,7 @@
 		B12ACC0820CED3D000B57D19 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B12ACC0720CED3D000B57D19 /* GoogleService-Info.plist */; };
 		B12ACC0B20CEE69E00B57D19 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B12ACC0A20CEE69D00B57D19 /* GoogleService-Info.plist */; };
 		B12ACC0D20CEF56E00B57D19 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACC0C20CEF56E00B57D19 /* Profile.swift */; };
+		B12ACC0F20CF003200B57D19 /* FirebaseGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACC0E20CF003200B57D19 /* FirebaseGet.swift */; };
 		CE0C042F07B5A329E4FEFD9C /* Pods_PassportChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E42A7065B22AD7679A149DD /* Pods_PassportChallengeUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +53,9 @@
 		9314776FE4A1B2804290AFCD /* Pods-PassportChallengeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassportChallengeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PassportChallengeUITests/Pods-PassportChallengeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		960C76AEFF414D0D710BAC0E /* Pods-PassportChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassportChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-PassportChallenge/Pods-PassportChallenge.release.xcconfig"; sourceTree = "<group>"; };
 		A1091FAC6B392DA8642ADE66 /* Pods-PassportChallengeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassportChallengeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PassportChallengeUITests/Pods-PassportChallengeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B118892B20D0149100239638 /* FirebasePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePost.swift; sourceTree = "<group>"; };
+		B118892D20D0AC6500239638 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		B118892E20D0AC6500239638 /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		B12ACBD120CED27800B57D19 /* PassportChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassportChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12ACBD420CED27800B57D19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B12ACBD620CED27800B57D19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +72,7 @@
 		B12ACC0720CED3D000B57D19 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B12ACC0A20CEE69D00B57D19 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B12ACC0C20CEF56E00B57D19 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		B12ACC0E20CF003200B57D19 /* FirebaseGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseGet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +195,8 @@
 		B12ACC0420CED30500B57D19 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B118892D20D0AC6500239638 /* ProfileCell.swift */,
+				B118892E20D0AC6500239638 /* ProfileCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -208,6 +218,8 @@
 		B12ACC0920CED95400B57D19 /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				B12ACC0E20CF003200B57D19 /* FirebaseGet.swift */,
+				B118892B20D0149100239638 /* FirebasePost.swift */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -334,6 +346,7 @@
 				B12ACC0B20CEE69E00B57D19 /* GoogleService-Info.plist in Resources */,
 				B12ACBDC20CED27A00B57D19 /* Assets.xcassets in Resources */,
 				B12ACBDA20CED27800B57D19 /* Main.storyboard in Resources */,
+				B118893020D0AC6500239638 /* ProfileCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,12 +413,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-PassportChallenge/Pods-PassportChallenge-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,6 +454,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B12ACBD720CED27800B57D19 /* ViewController.swift in Sources */,
+				B12ACC0F20CF003200B57D19 /* FirebaseGet.swift in Sources */,
+				B118892C20D0149100239638 /* FirebasePost.swift in Sources */,
+				B118892F20D0AC6500239638 /* ProfileCell.swift in Sources */,
 				B12ACC0D20CEF56E00B57D19 /* Profile.swift in Sources */,
 				B12ACBD520CED27800B57D19 /* AppDelegate.swift in Sources */,
 			);
