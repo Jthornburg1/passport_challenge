@@ -18,11 +18,17 @@ class Profile: NSObject {
     var image_url: String?
     
     func from(dictionary: [String:AnyObject]) {
-        let fields = ["gender","hobbies","image_url","name"]
-        for field in fields {
-            if let value = dictionary[field] as? String {
-                setValue(value, forKey: field)
-            }
+        if let gend = dictionary["gender"] as? String {
+            gender = gend
+        }
+        if let nam = dictionary["name"] as? String {
+            name = nam
+        }
+        if let imageUrl = dictionary["image_url"] as? String {
+            image_url = imageUrl
+        }
+        if let hob = dictionary["hobbies"] as? String {
+            hobbies = hob
         }
         if let age = dictionary["age"] {
             if let intAge = Int(String(describing: age)) {

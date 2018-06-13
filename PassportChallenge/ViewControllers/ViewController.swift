@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var segControl: UISegmentedControl!
     
     var profiles = [Profile]()
+    var imageCache = NSCache<AnyObject, AnyObject>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +25,14 @@ class ViewController: UIViewController {
         segControl.tintColor = UIColor.darkGray
         segControlHeightConstraint.constant = 0
         tableView.delegate = self
+        tableView.dataSource = self
         searchBar.delegate = self
         let cellNib = UINib(nibName: "ProfileCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "ProfileCell")
+        tableView.separatorColor = UIColor.black
+        tableView.separatorInset = UIEdgeInsets(top: -0.2, left: 0, bottom: 0, right: -0.2)
         FirebaseGet.shared.getProfiles { (profiles) in
-            self.profiles = profiles
+            self.profiles = profiles.sorted(by: { $0.id! < $1.id! })
             self.tableView.reloadData()
         }
     }
@@ -49,11 +53,32 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return profiles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let profile = profiles[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell") as? ProfileCell
+        if let id = profile.id {
+            if imageCache.object(forKey: id as AnyObject) == nil {
+                profile.getImage { (success, imag) in
+                    if let img = imag {
+                        self.imageCache.setObject(img, forKey: id as AnyObject)
+                        cell?.profileImageView.image = img
+                    }
+                }
+            } else {
+                if let img = self.imageCache.object(forKey: id as AnyObject) as? UIImage {
+                    cell?.profileImageView.image = img
+                }
+            }
+        }
+        cell?.configureFor(profile: profile)
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 156
     }
 }
 

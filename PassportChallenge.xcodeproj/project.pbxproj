@@ -12,6 +12,7 @@
 		B118892C20D0149100239638 /* FirebasePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118892B20D0149100239638 /* FirebasePost.swift */; };
 		B118892F20D0AC6500239638 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118892D20D0AC6500239638 /* ProfileCell.swift */; };
 		B118893020D0AC6500239638 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B118892E20D0AC6500239638 /* ProfileCell.xib */; };
+		B118893220D19F5300239638 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118893120D19F5300239638 /* UIColor+Extensions.swift */; };
 		B12ACBD520CED27800B57D19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACBD420CED27800B57D19 /* AppDelegate.swift */; };
 		B12ACBD720CED27800B57D19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACBD620CED27800B57D19 /* ViewController.swift */; };
 		B12ACBDA20CED27800B57D19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B12ACBD820CED27800B57D19 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		B118892B20D0149100239638 /* FirebasePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePost.swift; sourceTree = "<group>"; };
 		B118892D20D0AC6500239638 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		B118892E20D0AC6500239638 /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
+		B118893120D19F5300239638 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		B12ACBD120CED27800B57D19 /* PassportChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassportChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12ACBD420CED27800B57D19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B12ACBD620CED27800B57D19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 		B12ACC0620CED32500B57D19 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B118893120D19F5300239638 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				B12ACC0F20CF003200B57D19 /* FirebaseGet.swift in Sources */,
 				B118892C20D0149100239638 /* FirebasePost.swift in Sources */,
 				B118892F20D0AC6500239638 /* ProfileCell.swift in Sources */,
+				B118893220D19F5300239638 /* UIColor+Extensions.swift in Sources */,
 				B12ACC0D20CEF56E00B57D19 /* Profile.swift in Sources */,
 				B12ACBD520CED27800B57D19 /* AppDelegate.swift in Sources */,
 			);
