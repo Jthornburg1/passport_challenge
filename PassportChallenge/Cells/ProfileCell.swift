@@ -22,7 +22,6 @@ class ProfileCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .none
         interestsContainerView.layer.cornerRadius = 3
     }
     

@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol OverlayDelegate {
+    func removeOverlay()
+}
+
+class ViewController: UIViewController, OverlayDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -17,6 +21,7 @@ class ViewController: UIViewController {
     
     var profiles = [Profile]()
     var imageCache = NSCache<AnyObject, AnyObject>()
+    var detailVC: ProfileOverlayViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +52,15 @@ class ViewController: UIViewController {
         }) { (success) in
             // after appearance/disappearance
         }
+    }
+    
+    // Delegate function to remove Overlay
+    func removeOverlay() {
+        detailVC?.willMove(toParentViewController: nil)
+        detailVC!.view.removeFromSuperview()
+        detailVC!.removeFromParentViewController()
+        tableView.isUserInteractionEnabled = true
+        detailVC = nil
     }
 }
 
@@ -79,6 +93,18 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 156
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        detailVC = ProfileOverlayViewController()
+        detailVC!.delegate = self
+        detailVC!.profile = self.profiles[indexPath.row]
+        addChildViewController(detailVC!)
+        detailVC!.view.frame = CGRect(x: (view.frame.size.width / 2) - 150, y: (view.frame.size.height / 2) - 200, width: 300, height: 400)
+        view.addSubview(detailVC!.view)
+        detailVC!.didMove(toParentViewController: self)
+        tableView.isUserInteractionEnabled = false
     }
 }
 
