@@ -8,8 +8,14 @@
 
 import UIKit
 
-class ProfileOverlayViewController: UIViewController {
+protocol UpdateDelegate {
+    func update(profile: Profile)
+}
 
+class ProfileOverlayViewController: UIViewController, UITextFieldDelegate, UpdateDelegate {
+
+    @IBOutlet weak var removeHobbyButton: UIButton!
+    @IBOutlet weak var addHobbyButton: UIButton!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
@@ -21,9 +27,12 @@ class ProfileOverlayViewController: UIViewController {
     
     var profile: Profile!
     var delegate: OverlayDelegate?
+    var updatedHobbies: String?
+    var hobbyTextField: UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updatedHobbies = profile.hobbies
         view.layer.cornerRadius = 5
         view.backgroundColor = UIColor.black
         profile.getImage { (success, image) in
@@ -36,6 +45,12 @@ class ProfileOverlayViewController: UIViewController {
         dismissButton.setTitleColor(UIColor.darkGray, for: .normal)
         deleteButton.backgroundColor = UIColor.red
         deleteButton.setTitleColor(UIColor.white, for: .normal)
+        addHobbyButton.layer.cornerRadius = 3
+        removeHobbyButton.layer.cornerRadius = 3
+    }
+    
+    func update(profile: Profile) {
+        configureFor(profile: profile)
     }
     
     func configureFor(profile: Profile) {
@@ -69,5 +84,56 @@ class ProfileOverlayViewController: UIViewController {
     }
     @IBAction func didTapDismiss(_ sender: Any) {
         delegate?.removeOverlay()
+    }
+    
+    @IBAction func didTapRemoveHobby(_ sender: Any) {
+        var hobbyArray = [String.SubSequence]()
+        if let hbbys = profile.hobbies {
+            hobbyArray = hbbys.split(separator: ",")
+        }
+        let actionSheet = UIAlertController(title: "Remove?", message: "Select the hobby to remove", preferredStyle: .actionSheet)
+        for hobby in hobbyArray {
+            let action = UIAlertAction(title: String(describing: hobby), style: .default) { (action) in
+                let newHobbies = hobbyArray.joined(separator: ",")
+                self.updatedHobbies! = newHobbies.replacingOccurrences(of: hobby + ",", with: "")
+                self.addHobbies()
+            }
+            actionSheet.addAction(action)
+        }
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    @IBAction func didTapAddHobby(_ sender: Any) {
+        let alert = UIAlertController(title: "+", message: "Type the name of your new hobby:", preferredStyle: .alert)
+        alert.addTextField { (tf) in
+            self.hobbyTextField = tf
+            self.hobbyTextField?.placeholder = "Hobby Name"
+            self.hobbyTextField?.delegate = self
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let confirmAction = UIAlertAction(title: "Add This Hobby", style: .default) { (action) in
+            if let hbbs = self.updatedHobbies {
+                self.updatedHobbies = hbbs.appending("," + self.hobbyTextField!.text!)
+            } else {
+                self.updatedHobbies = self.hobbyTextField!.text!
+            }
+            self.addHobbies()
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(confirmAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func addHobbies() {
+        guard let id = profile.id else { return }
+        hobbiesLabel.text = updatedHobbies!.replacingOccurrences(of: ",", with: ", ")
+        FirebasePatch.shared.update(hobbies: updatedHobbies!, userId: id)
+        delegate?.updateProfiles()
+    }
+    
+    //TextField Delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

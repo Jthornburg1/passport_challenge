@@ -10,32 +10,36 @@ import UIKit
 
 protocol OverlayDelegate {
     func removeOverlay()
+    func updateProfiles()
 }
 
-enum TypeOfFilter {
-    case none
-    case nameAscending
-    case nameDescending
-    case ageAscending
-    case ageDescending
-    case menOnly
-    case womenOnly
+enum TypeOfFilter: String {
+    case none = "Sort by ID"
+    case nameAscending = "Ascending by Name"
+    case nameDescending = "Descending by Name"
+    case ageAscending = "Ascending by Age"
+    case ageDescending = "Descending by Age"
+    case menOnly = "Only Men"
+    case womenOnly = "Only Women"
+    static let allFilters = [TypeOfFilter.none,TypeOfFilter.nameAscending,TypeOfFilter.nameDescending,TypeOfFilter.ageAscending,TypeOfFilter.ageDescending,TypeOfFilter.menOnly,TypeOfFilter.womenOnly]
 }
 
 class ViewController: UIViewController, OverlayDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addProfileButton: UIButton!
-    @IBOutlet weak var applyFilterButton: UIButton!
+    @IBOutlet var TopButtons: [UIButton]!
     
     var profiles = [Profile]()
     var genderSpecificProfiles = [Profile]()
     var imageCache = NSCache<AnyObject, AnyObject>()
     var detailVC: ProfileOverlayViewController?
     var filterType: TypeOfFilter!
+    var detailDelegate: UpdateDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor.black
         filterType = .none
         tableView.tableFooterView = UIView()
         tableView.delegate = self
@@ -44,23 +48,47 @@ class ViewController: UIViewController, OverlayDelegate {
         tableView.register(cellNib, forCellReuseIdentifier: "ProfileCell")
         tableView.separatorColor = UIColor.black
         tableView.separatorInset = UIEdgeInsets(top: -0.2, left: 0, bottom: 0, right: -0.2)
-        FirebaseGet.shared.getProfiles { (profiles) in
-            self.profiles = profiles.sorted(by: { $0.id! < $1.id! })
-            self.tableView.reloadData()
-        }
-        applyFilterButton.layer.borderColor = UIColor.darkGray.cgColor
-        applyFilterButton.layer.cornerRadius = 3
-        applyFilterButton.layer.borderWidth = 0.5
-        addProfileButton.layer.borderColor = UIColor.darkGray.cgColor
-        addProfileButton.layer.borderWidth = 0.5
-        addProfileButton.layer.cornerRadius = 3
+        updateProfiles()
+        configureButtons()
     }
+    
+    func updateDetailProfile() {
+        if let detail = detailVC {
+            if let id = detail.profile.id {
+                let profile = getCorrectArray().filter{ $0.id! == id }.first!
+                detail.profile = profile
+                detailDelegate!.update(profile: profile)
+            }
+        }
+    }
+    
+    func configureButtons() {
+        for button in TopButtons {
+            button.layer.cornerRadius = 3
+            button.layer.borderWidth = 0.5
+            button.layer.borderColor = UIColor.darkGray.cgColor
+        }
+    }
+    
     @IBAction func didTapAddFilter(_ sender: Any) {
-        
+        let actionSheet = UIAlertController(title: "Filter/Sort", message: "How would you prefer profiles to display", preferredStyle: .actionSheet)
+        for filterCase in TypeOfFilter.allFilters {
+            let action = UIAlertAction(title: filterCase.rawValue, style: .default) { (action) in
+                self.filterType = filterCase
+                self.tableView.reloadData()
+            }
+            actionSheet.addAction(action)
+        }
+        present(actionSheet, animated: true, completion: nil)
     }
     
     @IBAction func didTapAddProfile(_ sender: Any) {
         
+    }
+    
+    @IBAction func didTapClearFilters(_ sender: Any) {
+        filterType = .none
+        tableView.reloadData()
     }
     
     // Delegate function to remove Overlay
@@ -69,27 +97,39 @@ class ViewController: UIViewController, OverlayDelegate {
         detailVC!.view.removeFromSuperview()
         detailVC!.removeFromParentViewController()
         tableView.isUserInteractionEnabled = true
+        tableView.reloadData()
         detailVC = nil
+    }
+    
+    func updateProfiles() {
+        FirebaseGet.shared.getProfiles { (profiles) in
+            self.profiles = profiles.sorted(by: { $0.id! < $1.id! })
+            self.updateDetailProfile()
+            self.tableView.reloadData()
+        }
     }
     
     func getCorrectArray() -> [Profile] {
         switch filterType {
+        case .none:
+            return profiles.sorted(by: { $0.id! < $1.id! })
         case .nameAscending:
-            profiles = profiles.sorted(by: { $0.name! < $1.name! })
+            return profiles.sorted(by: { $0.name! < $1.name! })
         case .nameDescending:
-            profiles = profiles.sorted(by: { $0.name! > $1.name! })
+            return profiles.sorted(by: { $0.name! > $1.name! })
         case .ageAscending:
-            profiles = profiles.sorted(by: { $0.age! < $1.age! })
+            return profiles.sorted(by: { $0.age! < $1.age! })
         case .ageDescending:
-            profiles = profiles.sorted(by: { $0.age! > $1.age! })
+            return profiles.sorted(by: { $0.age! > $1.age! })
         case .menOnly:
             genderSpecificProfiles = profiles.filter{ $0.gender! == "male" }
+            return genderSpecificProfiles
         case .womenOnly:
             genderSpecificProfiles = profiles.filter{ $0.gender! == "female" }
+            return genderSpecificProfiles
         default:
             return profiles
         }
-        return profiles
     }
 }
 
@@ -132,6 +172,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         detailVC = ProfileOverlayViewController()
         detailVC!.delegate = self
         detailVC!.profile = prfs[indexPath.row]
+        detailDelegate = detailVC!
         addChildViewController(detailVC!)
         detailVC!.view.frame = CGRect(x: (view.frame.size.width / 2) - 150, y: (view.frame.size.height / 2) - 200, width: 300, height: 400)
         view.addSubview(detailVC!.view)

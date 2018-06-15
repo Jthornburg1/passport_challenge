@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileOverlayViewController" customModule="PassportChallenge" customModuleProvider="target">
             <connections>
+                <outlet property="addHobbyButton" destination="alX-YZ-s3a" id="0lW-Wj-7Uv"/>
                 <outlet property="ageLabel" destination="cjj-y3-eXn" id="ag0-HH-8k8"/>
                 <outlet property="deleteButton" destination="lC1-cj-UdN" id="7as-Xl-cg9"/>
                 <outlet property="dismissButton" destination="1Ez-80-65o" id="OYm-og-UKq"/>
@@ -20,6 +21,7 @@
                 <outlet property="idLabel" destination="F9f-bH-AEb" id="WRn-Rr-25b"/>
                 <outlet property="nameLabel" destination="tGX-nz-Ix8" id="dlz-cO-MnK"/>
                 <outlet property="profileImage" destination="6tk-nY-dMH" id="QIc-Vn-v75"/>
+                <outlet property="removeHobbyButton" destination="uAF-6n-hOD" id="5RC-rt-fIW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -100,6 +102,37 @@
                         <constraint firstAttribute="height" constant="44" id="Lbi-1N-a1g"/>
                     </constraints>
                 </stackView>
+                <stackView opaque="NO" tag="1" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="BpT-dr-2wk">
+                    <rect key="frame" x="161" y="244" width="123" height="17"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alX-YZ-s3a">
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="17"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                            <state key="normal" title="Add Hobby">
+                                <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapAddHobby:" destination="-1" eventType="touchUpInside" id="2Zb-F5-Ynt"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAF-6n-hOD">
+                            <rect key="frame" x="63" y="0.0" width="60" height="17"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                            <state key="normal" title="Remove">
+                                <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapRemoveHobby:" destination="-1" eventType="touchUpInside" id="yyS-Fq-3uv"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="39A-Tb-Krl"/>
+                        <constraint firstAttribute="width" constant="123" id="ktm-bN-HI1"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
             <constraints>
@@ -108,6 +141,8 @@
                 <constraint firstItem="U1W-ov-Y7j" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="7yY-Gl-0f3"/>
                 <constraint firstItem="tGX-nz-Ix8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="89L-9b-pZA"/>
                 <constraint firstItem="U1W-ov-Y7j" firstAttribute="top" secondItem="tGX-nz-Ix8" secondAttribute="bottom" constant="2.5" id="9qU-Ke-zc8"/>
+                <constraint firstItem="W0P-3W-cXn" firstAttribute="top" secondItem="BpT-dr-2wk" secondAttribute="bottom" constant="-3" id="Hxr-Qw-hkB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BpT-dr-2wk" secondAttribute="trailing" constant="16" id="Icn-FU-AQp"/>
                 <constraint firstItem="d8v-Vj-xc0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="KYv-lF-Tr7"/>
                 <constraint firstItem="cjj-y3-eXn" firstAttribute="top" secondItem="U1W-ov-Y7j" secondAttribute="bottom" constant="2.5" id="Kgd-A6-LJA"/>
                 <constraint firstItem="F9f-bH-AEb" firstAttribute="top" secondItem="cjj-y3-eXn" secondAttribute="bottom" constant="2.5" id="TGa-Mz-0CC"/>
@@ -115,9 +150,9 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6tk-nY-dMH" secondAttribute="trailing" constant="16" id="Yuf-lc-9Hs"/>
                 <constraint firstItem="F9f-bH-AEb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="app-RW-FV2"/>
                 <constraint firstItem="cjj-y3-eXn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ecY-Kz-N81"/>
-                <constraint firstItem="W0P-3W-cXn" firstAttribute="top" secondItem="6tk-nY-dMH" secondAttribute="bottom" constant="16" id="fQt-07-CN5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="d8v-Vj-xc0" secondAttribute="trailing" id="gAV-pJ-fYZ"/>
                 <constraint firstItem="tGX-nz-Ix8" firstAttribute="top" secondItem="6tk-nY-dMH" secondAttribute="bottom" constant="16" id="iEx-bE-3Ua"/>
+                <constraint firstItem="BpT-dr-2wk" firstAttribute="top" secondItem="6tk-nY-dMH" secondAttribute="bottom" constant="2" id="qn0-RQ-ahB"/>
                 <constraint firstItem="6tk-nY-dMH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="wAS-5A-2Mz"/>
                 <constraint firstItem="6tk-nY-dMH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="yGu-xV-IHD"/>
             </constraints>
