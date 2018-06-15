@@ -32,6 +32,10 @@ class ProfileOverlayViewController: UIViewController {
             }
         }
         configureFor(profile: profile)
+        dismissButton.backgroundColor = UIColor.white
+        dismissButton.setTitleColor(UIColor.darkGray, for: .normal)
+        deleteButton.backgroundColor = UIColor.red
+        deleteButton.setTitleColor(UIColor.white, for: .normal)
     }
     
     func configureFor(profile: Profile) {
@@ -54,7 +58,14 @@ class ProfileOverlayViewController: UIViewController {
     }
     
     @IBAction func didTapDelete(_ sender: Any) {
-        
+        let alert = UIAlertController(title: "Delete?", message: "Are you sure", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+            self.delegate?.removeOverlay()
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(deleteAction)
+        present(alert, animated: true, completion: nil)
     }
     @IBAction func didTapDismiss(_ sender: Any) {
         delegate?.removeOverlay()

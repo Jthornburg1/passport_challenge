@@ -12,7 +12,7 @@ import UIKit
 extension UIColor {
     
     class func lightBlue() -> UIColor {
-        let color = UIColor(displayP3Red: 132.0/255.0, green: 112/255.0, blue: 255.0/255.0, alpha: 1.0)
+        let color = UIColor(displayP3Red: 205.0/255.0, green: 240.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         return color
     }
     

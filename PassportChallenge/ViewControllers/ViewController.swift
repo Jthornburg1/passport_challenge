@@ -12,26 +12,34 @@ protocol OverlayDelegate {
     func removeOverlay()
 }
 
+enum TypeOfFilter {
+    case none
+    case nameAscending
+    case nameDescending
+    case ageAscending
+    case ageDescending
+    case menOnly
+    case womenOnly
+}
+
 class ViewController: UIViewController, OverlayDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var segControlHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var segControl: UISegmentedControl!
+    @IBOutlet weak var addProfileButton: UIButton!
+    @IBOutlet weak var applyFilterButton: UIButton!
     
     var profiles = [Profile]()
+    var genderSpecificProfiles = [Profile]()
     var imageCache = NSCache<AnyObject, AnyObject>()
     var detailVC: ProfileOverlayViewController?
+    var filterType: TypeOfFilter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        filterType = .none
         tableView.tableFooterView = UIView()
-        segControl.alpha = 0
-        segControl.tintColor = UIColor.darkGray
-        segControlHeightConstraint.constant = 0
         tableView.delegate = self
         tableView.dataSource = self
-        searchBar.delegate = self
         let cellNib = UINib(nibName: "ProfileCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "ProfileCell")
         tableView.separatorColor = UIColor.black
@@ -40,18 +48,19 @@ class ViewController: UIViewController, OverlayDelegate {
             self.profiles = profiles.sorted(by: { $0.id! < $1.id! })
             self.tableView.reloadData()
         }
+        applyFilterButton.layer.borderColor = UIColor.darkGray.cgColor
+        applyFilterButton.layer.cornerRadius = 3
+        applyFilterButton.layer.borderWidth = 0.5
+        addProfileButton.layer.borderColor = UIColor.darkGray.cgColor
+        addProfileButton.layer.borderWidth = 0.5
+        addProfileButton.layer.cornerRadius = 3
     }
-    func segControl(show: Bool) {
-        let heightMetric: CGFloat = show ? 28 : 0
-        let alphaMetric: CGFloat = show ? 1 : 0
-        UIView.animate(withDuration: 0.3, animations: {
-            self.segControlHeightConstraint.constant = heightMetric
-            self.segControl.alpha = alphaMetric
-            self.viewWillLayoutSubviews()
-            self.view.layoutIfNeeded()
-        }) { (success) in
-            // after appearance/disappearance
-        }
+    @IBAction func didTapAddFilter(_ sender: Any) {
+        
+    }
+    
+    @IBAction func didTapAddProfile(_ sender: Any) {
+        
     }
     
     // Delegate function to remove Overlay
@@ -62,16 +71,38 @@ class ViewController: UIViewController, OverlayDelegate {
         tableView.isUserInteractionEnabled = true
         detailVC = nil
     }
+    
+    func getCorrectArray() -> [Profile] {
+        switch filterType {
+        case .nameAscending:
+            profiles = profiles.sorted(by: { $0.name! < $1.name! })
+        case .nameDescending:
+            profiles = profiles.sorted(by: { $0.name! > $1.name! })
+        case .ageAscending:
+            profiles = profiles.sorted(by: { $0.age! < $1.age! })
+        case .ageDescending:
+            profiles = profiles.sorted(by: { $0.age! > $1.age! })
+        case .menOnly:
+            genderSpecificProfiles = profiles.filter{ $0.gender! == "male" }
+        case .womenOnly:
+            genderSpecificProfiles = profiles.filter{ $0.gender! == "female" }
+        default:
+            return profiles
+        }
+        return profiles
+    }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profiles.count
+        let prfs = getCorrectArray()
+        return prfs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let profile = profiles[indexPath.row]
+        let prfs = getCorrectArray()
+        let profile = prfs[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell") as? ProfileCell
         if let id = profile.id {
             if imageCache.object(forKey: id as AnyObject) == nil {
@@ -97,28 +128,15 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let prfs = getCorrectArray()
         detailVC = ProfileOverlayViewController()
         detailVC!.delegate = self
-        detailVC!.profile = self.profiles[indexPath.row]
+        detailVC!.profile = prfs[indexPath.row]
         addChildViewController(detailVC!)
         detailVC!.view.frame = CGRect(x: (view.frame.size.width / 2) - 150, y: (view.frame.size.height / 2) - 200, width: 300, height: 400)
         view.addSubview(detailVC!.view)
         detailVC!.didMove(toParentViewController: self)
         tableView.isUserInteractionEnabled = false
-    }
-}
-
-extension ViewController: UISearchBarDelegate {
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        segControl(show: true)
-        return true
-    }
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        segControl(show: false)
-        FirebaseGet.shared.getProfiles { (pr) in
-            
-        }
-        searchBar.resignFirstResponder()
     }
 }
 
