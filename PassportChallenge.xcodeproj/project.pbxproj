@@ -16,6 +16,8 @@
 		B118893520D1BD9400239638 /* ProfileOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118893320D1BD9400239638 /* ProfileOverlayViewController.swift */; };
 		B118893620D1BD9400239638 /* ProfileOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B118893420D1BD9400239638 /* ProfileOverlayViewController.xib */; };
 		B118893820D441DD00239638 /* FirebasePatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118893720D441DD00239638 /* FirebasePatch.swift */; };
+		B118893B20D4AE2000239638 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118893920D4AE2000239638 /* AddUserViewController.swift */; };
+		B118893C20D4AE2000239638 /* AddUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B118893A20D4AE2000239638 /* AddUserViewController.xib */; };
 		B12ACBD520CED27800B57D19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACBD420CED27800B57D19 /* AppDelegate.swift */; };
 		B12ACBD720CED27800B57D19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACBD620CED27800B57D19 /* ViewController.swift */; };
 		B12ACBDA20CED27800B57D19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B12ACBD820CED27800B57D19 /* Main.storyboard */; };
@@ -64,6 +66,8 @@
 		B118893320D1BD9400239638 /* ProfileOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileOverlayViewController.swift; sourceTree = "<group>"; };
 		B118893420D1BD9400239638 /* ProfileOverlayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileOverlayViewController.xib; sourceTree = "<group>"; };
 		B118893720D441DD00239638 /* FirebasePatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePatch.swift; sourceTree = "<group>"; };
+		B118893920D4AE2000239638 /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
+		B118893A20D4AE2000239638 /* AddUserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddUserViewController.xib; sourceTree = "<group>"; };
 		B12ACBD120CED27800B57D19 /* PassportChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassportChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12ACBD420CED27800B57D19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B12ACBD620CED27800B57D19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 			children = (
 				B118893320D1BD9400239638 /* ProfileOverlayViewController.swift */,
 				B118893420D1BD9400239638 /* ProfileOverlayViewController.xib */,
+				B118893920D4AE2000239638 /* AddUserViewController.swift */,
+				B118893A20D4AE2000239638 /* AddUserViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -360,6 +366,7 @@
 				B12ACBDC20CED27A00B57D19 /* Assets.xcassets in Resources */,
 				B12ACBDA20CED27800B57D19 /* Main.storyboard in Resources */,
 				B118893020D0AC6500239638 /* ProfileCell.xib in Resources */,
+				B118893C20D4AE2000239638 /* AddUserViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +478,7 @@
 				B118892C20D0149100239638 /* FirebasePost.swift in Sources */,
 				B118893520D1BD9400239638 /* ProfileOverlayViewController.swift in Sources */,
 				B118892F20D0AC6500239638 /* ProfileCell.swift in Sources */,
+				B118893B20D4AE2000239638 /* AddUserViewController.swift in Sources */,
 				B118893220D19F5300239638 /* UIColor+Extensions.swift in Sources */,
 				B118893820D441DD00239638 /* FirebasePatch.swift in Sources */,
 				B12ACC0D20CEF56E00B57D19 /* Profile.swift in Sources */,

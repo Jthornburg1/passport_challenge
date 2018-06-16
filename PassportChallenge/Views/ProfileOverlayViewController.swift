@@ -35,11 +35,6 @@ class ProfileOverlayViewController: UIViewController, UITextFieldDelegate, Updat
         updatedHobbies = profile.hobbies
         view.layer.cornerRadius = 5
         view.backgroundColor = UIColor.black
-        profile.getImage { (success, image) in
-            if let img = image {
-                self.profileImage.image = img
-            }
-        }
         configureFor(profile: profile)
         dismissButton.backgroundColor = UIColor.white
         dismissButton.setTitleColor(UIColor.darkGray, for: .normal)
@@ -70,6 +65,11 @@ class ProfileOverlayViewController: UIViewController, UITextFieldDelegate, Updat
             let spaced = hobbies.replacingOccurrences(of: ",", with: ", ")
             hobbiesLabel.text = spaced
         }
+        profile.getImage { (success, image) in
+            if let img = image {
+                self.profileImage.image = img
+            }
+        }
     }
     
     @IBAction func didTapDelete(_ sender: Any) {
@@ -96,6 +96,7 @@ class ProfileOverlayViewController: UIViewController, UITextFieldDelegate, Updat
             let action = UIAlertAction(title: String(describing: hobby), style: .default) { (action) in
                 let newHobbies = hobbyArray.joined(separator: ",")
                 self.updatedHobbies! = newHobbies.replacingOccurrences(of: hobby + ",", with: "")
+                self.updatedHobbies! = newHobbies.replacingOccurrences(of: hobby, with: "")
                 self.addHobbies()
             }
             actionSheet.addAction(action)
@@ -112,10 +113,10 @@ class ProfileOverlayViewController: UIViewController, UITextFieldDelegate, Updat
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let confirmAction = UIAlertAction(title: "Add This Hobby", style: .default) { (action) in
-            if let hbbs = self.updatedHobbies {
-                self.updatedHobbies = hbbs.appending("," + self.hobbyTextField!.text!)
-            } else {
+            if self.updatedHobbies == nil || self.updatedHobbies == "" {
                 self.updatedHobbies = self.hobbyTextField!.text!
+            } else if let hbbs = self.updatedHobbies {
+                self.updatedHobbies = hbbs.appending("," + self.hobbyTextField!.text!)
             }
             self.addHobbies()
         }
@@ -126,7 +127,6 @@ class ProfileOverlayViewController: UIViewController, UITextFieldDelegate, Updat
     
     func addHobbies() {
         guard let id = profile.id else { return }
-        hobbiesLabel.text = updatedHobbies!.replacingOccurrences(of: ",", with: ", ")
         FirebasePatch.shared.update(hobbies: updatedHobbies!, userId: id)
         delegate?.updateProfiles()
     }
