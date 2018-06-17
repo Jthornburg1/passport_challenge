@@ -33,6 +33,7 @@ class ViewController: UIViewController, OverlayDelegate {
     var genderSpecificProfiles = [Profile]()
     var imageCache = NSCache<AnyObject, AnyObject>()
     var detailVC: ProfileOverlayViewController?
+    var addProfVC: AddUserViewController?
     var filterType: TypeOfFilter!
     var detailDelegate: UpdateDelegate?
     
@@ -83,7 +84,12 @@ class ViewController: UIViewController, OverlayDelegate {
     }
     
     @IBAction func didTapAddProfile(_ sender: Any) {
-        
+        addProfVC = AddUserViewController()
+        addProfVC!.delegate = self
+        addProfVC!.view.frame = view.frame
+        addChildViewController(addProfVC!)
+        view.addSubview(addProfVC!.view)
+        addProfVC!.didMove(toParentViewController: self)
     }
     
     @IBAction func didTapClearFilters(_ sender: Any) {
