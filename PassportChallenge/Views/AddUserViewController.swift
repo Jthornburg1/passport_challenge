@@ -8,7 +8,12 @@
 
 import UIKit
 
-class AddUserViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+enum Gender: String {
+    case male = "male"
+    case female = "female"
+}
+
+class AddUserViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var textfields: [UITextField]!
     @IBOutlet weak var hobbyTextfield: UITextField!
@@ -21,16 +26,12 @@ class AddUserViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var cancelButton: UIButton!
     
     var delegate: OverlayDelegate?
+    var selectedGender: Gender?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTextfields()
-        var cameraImage = UIImage(named: "add_photo")
-        cameraImage = cameraImage?.withRenderingMode(.alwaysTemplate)
-        photoButton.tintColor = UIColor.darkGray
-        photoButton.setBackgroundImage(cameraImage, for: .normal)
-        photoButton.setTitle("", for: .normal)
-        photoButton.contentMode = .scaleAspectFit
+        photoButton.layer.cornerRadius = 3
     }
     
     func configureTextfields() {
@@ -54,6 +55,22 @@ class AddUserViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     
     @IBAction func didTapAddPhoto(_ sender: Any) {
+        useCamera()
+    }
+}
+
+extension AddUserViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func useCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = .camera
+            imagePickerController.allowsEditing = false
+            present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
     }
 }
