@@ -15,6 +15,7 @@ enum Gender: String {
 
 class AddUserViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet var textfields: [UITextField]!
     @IBOutlet weak var hobbyTextfield: UITextField!
     @IBOutlet weak var displayContainerView: UIView!
@@ -32,6 +33,7 @@ class AddUserViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         configureTextfields()
         photoButton.layer.cornerRadius = 3
+        displayContainerView.layer.cornerRadius = 3
     }
     
     func configureTextfields() {
@@ -43,7 +45,7 @@ class AddUserViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapCancel(_ sender: Any) {
-        
+        delegate?.remove(overlay: self)
     }
     
     @IBAction func didTapAddProfile(_ sender: Any) {
@@ -61,6 +63,7 @@ class AddUserViewController: UIViewController, UITextFieldDelegate {
 
 extension AddUserViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func useCamera() {
+        // For a fully fleshed-out app, I would check if permission was granted and, if not, present some type of alert.
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let imagePickerController = UIImagePickerController()
             imagePickerController.delegate = self
@@ -70,7 +73,14 @@ extension AddUserViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
     }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
+        picker.dismiss(animated: true, completion: nil)
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            userImage.image = image
+        }
     }
 }

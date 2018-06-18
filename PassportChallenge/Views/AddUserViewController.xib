@@ -20,6 +20,7 @@
                 <outlet property="hobbyTextfield" destination="XI1-mM-x58" id="uNl-df-pPA"/>
                 <outlet property="nameTextfield" destination="862-9a-XVF" id="gsF-0L-SwS"/>
                 <outlet property="photoButton" destination="Pcv-Kp-oih" id="wz2-2j-Bs5"/>
+                <outlet property="userImage" destination="srV-tn-gXk" id="fJZ-23-RLO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outletCollection property="textfields" destination="862-9a-XVF" collectionClass="NSMutableArray" id="abX-Ih-xgF"/>
                 <outletCollection property="textfields" destination="Txa-Ut-VkT" collectionClass="NSMutableArray" id="wiT-NN-lRC"/>

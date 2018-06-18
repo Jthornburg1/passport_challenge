@@ -9,7 +9,9 @@
 import UIKit
 
 protocol OverlayDelegate {
-    func removeOverlay()
+    var addProfVC: AddUserViewController? { get set }
+    var detailVC: ProfileOverlayViewController? { get set }
+    func remove(overlay: UIViewController)
     func updateProfiles()
 }
 
@@ -98,12 +100,13 @@ class ViewController: UIViewController, OverlayDelegate {
     }
     
     // Delegate function to remove Overlay
-    func removeOverlay() {
-        detailVC?.willMove(toParentViewController: nil)
-        detailVC!.view.removeFromSuperview()
-        detailVC!.removeFromParentViewController()
+    func remove(overlay: UIViewController) {
+        overlay.willMove(toParentViewController: nil)
+        overlay.view.removeFromSuperview()
+        overlay.removeFromParentViewController()
         tableView.isUserInteractionEnabled = true
         tableView.reloadData()
+        addProfVC = nil
         detailVC = nil
     }
     

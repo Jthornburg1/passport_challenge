@@ -76,14 +76,14 @@ class ProfileOverlayViewController: UIViewController, UITextFieldDelegate, Updat
         let alert = UIAlertController(title: "Delete?", message: "Are you sure", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: "Yes", style: .default) { (action) in
-            self.delegate?.removeOverlay()
+            self.delegate?.remove(overlay: self)
         }
         alert.addAction(cancelAction)
         alert.addAction(deleteAction)
         present(alert, animated: true, completion: nil)
     }
     @IBAction func didTapDismiss(_ sender: Any) {
-        delegate?.removeOverlay()
+        delegate?.remove(overlay: self)
     }
     
     @IBAction func didTapRemoveHobby(_ sender: Any) {
