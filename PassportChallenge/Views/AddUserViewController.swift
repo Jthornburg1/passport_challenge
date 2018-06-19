@@ -28,6 +28,8 @@ class AddUserViewController: UIViewController, UITextFieldDelegate {
     
     var delegate: OverlayDelegate?
     var selectedGender: Gender?
+    var newProfileDict = [String:AnyObject]()
+    var downloadUrlString: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +51,26 @@ class AddUserViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapAddProfile(_ sender: Any) {
-        print("Add Profile")
+        newProfileDict["name"] = self.nameTextfield.text! as AnyObject
+        newProfileDict["age"] = self.ageTextfield.text! as AnyObject
+        newProfileDict["hobbies"] = self.hobbyTextfield.text!.replacingOccurrences(of: ", ", with: ",") as AnyObject
+        if let gender = self.selectedGender {
+            newProfileDict["gender"] = gender.rawValue as AnyObject
+        }
+        if let urlString = downloadUrlString {
+            newProfileDict["image_url"] = urlString as AnyObject
+        }
+        FirebasePost.shared.postProfileToFireBase(dictionary: newProfileDict)
+        delegate?.updateProfiles()
+        delegate?.remove(overlay: self)
     }
     
     @IBAction func segValueChanged(_ sender: Any) {
-        
+        if genderSegControl.selectedSegmentIndex == 0 {
+            selectedGender = .female
+        } else {
+            selectedGender = .male
+        }
     }
     
     @IBAction func didTapAddPhoto(_ sender: Any) {
@@ -81,6 +98,9 @@ extension AddUserViewController: UIImagePickerControllerDelegate, UINavigationCo
         picker.dismiss(animated: true, completion: nil)
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             userImage.image = image
+            FirebaseStoragePost.shared.post(image: image) { (urlString) in
+                self.downloadUrlString = urlString
+            }
         }
     }
 }

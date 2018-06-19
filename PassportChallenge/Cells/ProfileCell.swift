@@ -17,15 +17,17 @@ class ProfileCell: UITableViewCell {
     @IBOutlet weak var interestsContainerView: UIView!
     @IBOutlet weak var interestListLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
     
-    
-
     override func awakeFromNib() {
         super.awakeFromNib()
         interestsContainerView.layer.cornerRadius = 3
     }
     
     func configureFor(profile: Profile) {
+        if let age = profile.age {
+            ageLabel.text = String(describing: age)
+        }
         if let name = profile.name {
             nameLabel.text = name
         }
