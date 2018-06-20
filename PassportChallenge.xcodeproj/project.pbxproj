@@ -30,6 +30,8 @@
 		B12ACC0D20CEF56E00B57D19 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACC0C20CEF56E00B57D19 /* Profile.swift */; };
 		B12ACC0F20CF003200B57D19 /* FirebaseGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12ACC0E20CF003200B57D19 /* FirebaseGet.swift */; };
 		B12CB6F120D826FE003C8720 /* FirebaseStoragePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12CB6F020D826FE003C8720 /* FirebaseStoragePost.swift */; };
+		B1DCBC8420DA8FED005D366F /* FirebaseStorageDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DCBC8320DA8FED005D366F /* FirebaseStorageDelete.swift */; };
+		B1DCBC8620DA9237005D366F /* FirebaseDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DCBC8520DA9237005D366F /* FirebaseDelete.swift */; };
 		CE0C042F07B5A329E4FEFD9C /* Pods_PassportChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E42A7065B22AD7679A149DD /* Pods_PassportChallengeUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,8 @@
 		B12ACC0C20CEF56E00B57D19 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		B12ACC0E20CF003200B57D19 /* FirebaseGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseGet.swift; sourceTree = "<group>"; };
 		B12CB6F020D826FE003C8720 /* FirebaseStoragePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStoragePost.swift; sourceTree = "<group>"; };
+		B1DCBC8320DA8FED005D366F /* FirebaseStorageDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageDelete.swift; sourceTree = "<group>"; };
+		B1DCBC8520DA9237005D366F /* FirebaseDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDelete.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +245,8 @@
 				B118892B20D0149100239638 /* FirebasePost.swift */,
 				B118893720D441DD00239638 /* FirebasePatch.swift */,
 				B12CB6F020D826FE003C8720 /* FirebaseStoragePost.swift */,
+				B1DCBC8320DA8FED005D366F /* FirebaseStorageDelete.swift */,
+				B1DCBC8520DA9237005D366F /* FirebaseDelete.swift */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -479,6 +485,7 @@
 				B12ACBD720CED27800B57D19 /* ViewController.swift in Sources */,
 				B12ACC0F20CF003200B57D19 /* FirebaseGet.swift in Sources */,
 				B12CB6F120D826FE003C8720 /* FirebaseStoragePost.swift in Sources */,
+				B1DCBC8620DA9237005D366F /* FirebaseDelete.swift in Sources */,
 				B118892C20D0149100239638 /* FirebasePost.swift in Sources */,
 				B118893520D1BD9400239638 /* ProfileOverlayViewController.swift in Sources */,
 				B118892F20D0AC6500239638 /* ProfileCell.swift in Sources */,
@@ -487,6 +494,7 @@
 				B118893820D441DD00239638 /* FirebasePatch.swift in Sources */,
 				B12ACC0D20CEF56E00B57D19 /* Profile.swift in Sources */,
 				B12ACBD520CED27800B57D19 /* AppDelegate.swift in Sources */,
+				B1DCBC8420DA8FED005D366F /* FirebaseStorageDelete.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

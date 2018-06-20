@@ -13,9 +13,10 @@ class FirebasePost {
     
     public static let shared = FirebasePost()
     var ref: DatabaseReference!
-    fileprivate init(){ ref = Database.database().reference() }
+    fileprivate init(){}
     
     func postProfileToFireBase(dictionary: [String:AnyObject]) {
+        ref = Database.database().reference()
         let random = String(describing: Int(arc4random_uniform(999999999)))
         var profile = dictionary
         profile["id"] = random as AnyObject

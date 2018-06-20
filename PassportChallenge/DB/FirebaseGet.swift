@@ -18,9 +18,10 @@ class FirebaseGet {
     func getProfiles(completion: @escaping ([Profile]) -> ()) {
         var profiles = [Profile]()
         ref = Database.database().reference()
-        ref!.child("profiles").observeSingleEvent(of: .value, with: {(snapshot) in
+        ref!.child("profiles").observe(.value, with: {(snapshot) in
+            // Must be emptied otherwise when an event in the database occurs (removal) the profiles count doubles.
+            profiles.removeAll()
             for child in snapshot.children.allObjects as! [DataSnapshot] {
-                // beginning to think there was no way to convert DataSnapshot to a data structure that was useable; hence the variable name 'unicorn'
                 let unicorn = child.value as! [String:AnyObject]
                 let profile = Profile()
                 profile.from(dictionary: unicorn)

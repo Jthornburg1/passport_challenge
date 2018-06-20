@@ -112,6 +112,7 @@ class ViewController: UIViewController, OverlayDelegate {
     
     func updateProfiles() {
         FirebaseGet.shared.getProfiles { (profiles) in
+            self.profiles.removeAll()
             self.profiles = profiles.sorted(by: { $0.id! < $1.id! })
             self.updateDetailProfile()
             self.tableView.reloadData()

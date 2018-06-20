@@ -15,16 +15,17 @@ class FirebaseStoragePost {
     
     fileprivate init(){}
     
-    func post(image: UIImage, completion: @escaping (String) -> ()) {
+    func post(image: UIImage, completion: @escaping ((String,String)) -> ()) {
         let storageRef = Storage.storage().reference()
         let id = UUID().uuidString
-        let newPhotoRef = storageRef.child("images/\(id)")
-        if let data = UIImagePNGRepresentation(image) {
+        let childString = "images/\(id)"
+        let newPhotoRef = storageRef.child(childString)
+        if let data = UIImageJPEGRepresentation(image, 0.25) {
             let uploadTask = newPhotoRef.putData(data, metadata: nil) { (metadata, error) in
                 newPhotoRef.downloadURL { (url, error) in
                     guard let downloadUrl = url else { print(error?.localizedDescription ?? String()); return }
                     let strUrl = String(describing: downloadUrl)
-                    completion(strUrl)
+                    completion((strUrl,childString))
                 }
             }
             uploadTask.resume()

@@ -30,6 +30,8 @@ class AddUserViewController: UIViewController, UITextFieldDelegate {
     var selectedGender: Gender?
     var newProfileDict = [String:AnyObject]()
     var downloadUrlString: String?
+    var activityIndicator: UIActivityIndicatorView?
+    var deletionString: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +61,9 @@ class AddUserViewController: UIViewController, UITextFieldDelegate {
         }
         if let urlString = downloadUrlString {
             newProfileDict["image_url"] = urlString as AnyObject
+        }
+        if let deletionString = deletionString {
+            newProfileDict["deletion_string"] = deletionString as AnyObject
         }
         FirebasePost.shared.postProfileToFireBase(dictionary: newProfileDict)
         delegate?.updateProfiles()
@@ -94,12 +99,24 @@ extension AddUserViewController: UIImagePickerControllerDelegate, UINavigationCo
         picker.dismiss(animated: true, completion: nil)
     }
     
+    func addSpinner() {
+        let rect = CGRect(x: (view.frame.width / 2) - 20, y: (view.frame.height / 2) - 20, width: 40, height: 40)
+        activityIndicator = UIActivityIndicatorView(frame: rect)
+        activityIndicator?.startAnimating()
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true, completion: nil)
+        view.isUserInteractionEnabled = false
+        addSpinner()
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             userImage.image = image
-            FirebaseStoragePost.shared.post(image: image) { (urlString) in
-                self.downloadUrlString = urlString
+            FirebaseStoragePost.shared.post(image: image) { (stringTuple) in
+                self.activityIndicator?.stopAnimating()
+                self.activityIndicator = nil
+                self.view.isUserInteractionEnabled = true
+                self.downloadUrlString = stringTuple.0
+                self.deletionString = stringTuple.1
             }
         }
     }

@@ -72,7 +72,7 @@
                             </constraints>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Age" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Txa-Ut-VkT">
                             <rect key="frame" x="20" y="62" width="280" height="40"/>
@@ -90,7 +90,7 @@
                             </constraints>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2xm-NF-MyV">
                             <rect key="frame" x="30" y="61" width="240" height="1"/>
@@ -179,7 +179,7 @@
                         <constraint firstItem="XI1-mM-x58" firstAttribute="leading" secondItem="9Kr-2S-hye" secondAttribute="leading" constant="20" id="xaS-Tt-gTg"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="srV-tn-gXk">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="srV-tn-gXk">
                     <rect key="frame" x="157.5" y="406.5" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="yhF-ki-hzl"/>
