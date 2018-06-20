@@ -21,37 +21,30 @@ class ProfileCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        profileImageView.image = UIImage(named: "placeholder")
         interestsContainerView.layer.cornerRadius = 3
     }
     
+    override func prepareForReuse() {
+        profileImageView.image = UIImage(named: "placeholder")
+    }
+    
     func configureFor(profile: Profile) {
-        if let age = profile.age {
-            ageLabel.text = String(describing: age)
-        }
-        if let name = profile.name {
-            nameLabel.text = name
-        }
-        if let gender = profile.gender {
-            genderLabel.text = gender
-        }
-        if let id = profile.id {
-            idLabel.text = String(describing: id)
-        }
-        if let hobbies = profile.hobbies {
-            let separatedHobbies = hobbies.replacingOccurrences(of: ",", with: ", ")
-            interestListLabel.text = separatedHobbies
-        }
-        if let gender = profile.gender {
-            switch gender {
-            case "male":
-                contentView.backgroundColor = UIColor.lightBlue()
-                interestListLabel.textColor = UIColor.blue
-            case "female":
-                contentView.backgroundColor = UIColor.pink()
-                interestListLabel.textColor = UIColor.red
-            default:
-                contentView.backgroundColor = UIColor.lightGray
-            }
+        ageLabel.text = String(describing: profile.age)
+        nameLabel.text = profile.name
+        genderLabel.text = profile.gender
+        idLabel.text = String(describing: profile.id)
+        let separatedHobbies = profile.hobbies.replacingOccurrences(of: ",", with: ", ")
+        interestListLabel.text = separatedHobbies
+        switch profile.gender {
+        case "male":
+            contentView.backgroundColor = UIColor.lightBlue()
+            interestListLabel.textColor = UIColor.blue
+        case "female":
+            contentView.backgroundColor = UIColor.pink()
+            interestListLabel.textColor = UIColor.red
+        default:
+            contentView.backgroundColor = UIColor.lightGray
         }
     }
 }

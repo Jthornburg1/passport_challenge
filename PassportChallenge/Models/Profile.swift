@@ -10,20 +10,29 @@ import Foundation
 import UIKit
 
 class Profile: NSObject {
-    var name: String?
-    var age: Int?
-    var hobbies: String?
-    var id: Int?
-    var gender: String?
-    var image_url: String?
-    var deletion_string: String?
+    var name = ""
+    var age = 0
+    var hobbies = ""
+    var id = 0
+    var gender = ""
+    var image_url = ""
+    var deletion_string = ""
     
     func from(dictionary: [String:AnyObject]) {
-        let fields = ["gender","name","image_url","hobbies","deletion_string"]
-        for field in fields {
-            if let value = dictionary[field] as? String {
-                setValue(value, forKey: field)
-            }
+        if let gender = dictionary["gender"] as? String {
+            self.gender = gender
+        }
+        if let name = dictionary["name"] as? String {
+            self.name = name
+        }
+        if let image_url = dictionary["image_url"] as? String {
+            self.image_url = image_url
+        }
+        if let hobbies = dictionary["hobbies"] as? String {
+            self.hobbies = hobbies
+        }
+        if let deletionString = dictionary["deletion_string"] as? String {
+            self.deletion_string = deletionString
         }
         if let age = dictionary["age"] {
             if let intAge = Int(String(describing: age)) {
@@ -39,28 +48,24 @@ class Profile: NSObject {
     
     func hobbiesToArray() -> [String] {
         var hobbiesArray = [String]()
-        if let hobbies = self.hobbies {
-            hobbiesArray = hobbies.components(separatedBy: ",")
-        }
+        hobbiesArray = hobbies.components(separatedBy: ",")
         return hobbiesArray
     }
     
     func getImage(completion: @escaping (Bool, UIImage?) -> ()) {
-        if let urlString = image_url {
-            guard let url = URL(string: urlString) else { completion(false,nil); return }
-            let session = URLSession.shared
-            let request = URLRequest(url: url)
-            let task = session.dataTask(with: request) { (data, response, error) in
-                if let dta = data {
-                    if let image = UIImage(data: dta) {
-                        DispatchQueue.main.async(execute: {
-                            completion(true,image)
-                        })
-                    }
-                } else { completion(false,nil); return }
-            }
-            task.resume()
-        } else { completion(false,nil); return }
+        guard let url = URL(string: image_url) else { completion(false,nil); return }
+        let session = URLSession.shared
+        let request = URLRequest(url: url)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let dta = data {
+                if let image = UIImage(data: dta) {
+                    DispatchQueue.main.async(execute: {
+                        completion(true,image)
+                    })
+                }
+            } else { completion(false,nil); return }
+        }
+        task.resume()
     }
 }
 

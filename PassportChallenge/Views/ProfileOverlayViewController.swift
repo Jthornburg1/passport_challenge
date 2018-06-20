@@ -49,22 +49,12 @@ class ProfileOverlayViewController: UIViewController, UITextFieldDelegate, Updat
     }
     
     func configureFor(profile: Profile) {
-        if let name = profile.name {
-            nameLabel.text = name
-        }
-        if let genderTxt = profile.gender {
-            genderLabel.text = genderTxt
-        }
-        if let idTxt = profile.id {
-            idLabel.text = String(describing: idTxt)
-        }
-        if let ageText = profile.age {
-            ageLabel.text = String(describing: ageText)
-        }
-        if let hobbies = profile.hobbies {
-            let spaced = hobbies.replacingOccurrences(of: ",", with: ", ")
-            hobbiesLabel.text = spaced
-        }
+        nameLabel.text = profile.name
+        genderLabel.text = profile.gender
+        idLabel.text = String(describing: profile.id)
+        ageLabel.text = String(describing: profile.age)
+        let spaced = profile.hobbies.replacingOccurrences(of: ",", with: ", ")
+        hobbiesLabel.text = spaced
         profile.getImage { (success, image) in
             if let img = image {
                 self.profileImage.image = img
@@ -76,6 +66,9 @@ class ProfileOverlayViewController: UIViewController, UITextFieldDelegate, Updat
         let alert = UIAlertController(title: "Delete?", message: "Are you sure", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+            let id = self.profile.id
+            FirebaseStorageDelete.shared.DeleteFileAt(location: self.profile.deletion_string)
+            FirebaseDelete.shared.deleteProfile(id: id)
             self.delegate?.remove(overlay: self)
         }
         alert.addAction(cancelAction)
@@ -88,9 +81,7 @@ class ProfileOverlayViewController: UIViewController, UITextFieldDelegate, Updat
     
     @IBAction func didTapRemoveHobby(_ sender: Any) {
         var hobbyArray = [String.SubSequence]()
-        if let hbbys = profile.hobbies {
-            hobbyArray = hbbys.split(separator: ",")
-        }
+        hobbyArray = profile.hobbies.split(separator: ",")
         let actionSheet = UIAlertController(title: "Remove?", message: "Select the hobby to remove", preferredStyle: .actionSheet)
         for hobby in hobbyArray {
             let action = UIAlertAction(title: String(describing: hobby), style: .default) { (action) in
@@ -126,7 +117,7 @@ class ProfileOverlayViewController: UIViewController, UITextFieldDelegate, Updat
     }
     
     func addHobbies() {
-        guard let id = profile.id else { return }
+        let id = profile.id 
         FirebasePatch.shared.update(hobbies: updatedHobbies!, userId: id)
         delegate?.updateProfiles()
     }

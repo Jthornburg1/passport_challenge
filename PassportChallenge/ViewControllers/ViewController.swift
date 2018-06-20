@@ -57,11 +57,9 @@ class ViewController: UIViewController, OverlayDelegate {
     
     func updateDetailProfile() {
         if let detail = detailVC {
-            if let id = detail.profile.id {
-                let profile = getCorrectArray().filter{ $0.id! == id }.first!
-                detail.profile = profile
-                detailDelegate!.update(profile: profile)
-            }
+            let profile = getCorrectArray().filter{ $0.id == detail.profile.id }.first!
+            detail.profile = profile
+            detailDelegate!.update(profile: profile)
         }
     }
     
@@ -113,7 +111,7 @@ class ViewController: UIViewController, OverlayDelegate {
     func updateProfiles() {
         FirebaseGet.shared.getProfiles { (profiles) in
             self.profiles.removeAll()
-            self.profiles = profiles.sorted(by: { $0.id! < $1.id! })
+            self.profiles = profiles.sorted(by: { $0.id < $1.id })
             self.updateDetailProfile()
             self.tableView.reloadData()
         }
@@ -122,20 +120,20 @@ class ViewController: UIViewController, OverlayDelegate {
     func getCorrectArray() -> [Profile] {
         switch filterType {
         case .none:
-            return profiles.sorted(by: { $0.id! < $1.id! })
+            return profiles.sorted(by: { $0.id < $1.id })
         case .nameAscending:
-            return profiles.sorted(by: { $0.name! < $1.name! })
+            return profiles.sorted(by: { $0.name < $1.name })
         case .nameDescending:
-            return profiles.sorted(by: { $0.name! > $1.name! })
+            return profiles.sorted(by: { $0.name > $1.name })
         case .ageAscending:
-            return profiles.sorted(by: { $0.age! < $1.age! })
+            return profiles.sorted(by: { $0.age < $1.age })
         case .ageDescending:
-            return profiles.sorted(by: { $0.age! > $1.age! })
+            return profiles.sorted(by: { $0.age > $1.age })
         case .menOnly:
-            genderSpecificProfiles = profiles.filter{ $0.gender! == "male" }
+            genderSpecificProfiles = profiles.filter{ $0.gender == "male" }
             return genderSpecificProfiles
         case .womenOnly:
-            genderSpecificProfiles = profiles.filter{ $0.gender! == "female" }
+            genderSpecificProfiles = profiles.filter{ $0.gender == "female" }
             return genderSpecificProfiles
         default:
             return profiles
@@ -154,18 +152,16 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let prfs = getCorrectArray()
         let profile = prfs[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell") as? ProfileCell
-        if let id = profile.id {
-            if imageCache.object(forKey: id as AnyObject) == nil {
-                profile.getImage { (success, imag) in
-                    if let img = imag {
-                        self.imageCache.setObject(img, forKey: id as AnyObject)
-                        cell?.profileImageView.image = img
-                    }
-                }
-            } else {
-                if let img = self.imageCache.object(forKey: id as AnyObject) as? UIImage {
+        if imageCache.object(forKey: profile.id as AnyObject) == nil {
+            profile.getImage { (success, imag) in
+                if let img = imag {
+                    self.imageCache.setObject(img, forKey: profile.id as AnyObject)
                     cell?.profileImageView.image = img
                 }
+            }
+        } else {
+            if let img = self.imageCache.object(forKey: profile.id as AnyObject) as? UIImage {
+                cell?.profileImageView.image = img
             }
         }
         cell?.configureFor(profile: profile)
