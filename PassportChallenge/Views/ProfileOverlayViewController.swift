@@ -87,7 +87,11 @@ class ProfileOverlayViewController: UIViewController, UITextFieldDelegate, Updat
             let action = UIAlertAction(title: String(describing: hobby), style: .default) { (action) in
                 let newHobbies = hobbyArray.joined(separator: ",")
                 self.updatedHobbies! = newHobbies.replacingOccurrences(of: hobby + ",", with: "")
-                self.updatedHobbies! = newHobbies.replacingOccurrences(of: hobby, with: "")
+                self.updatedHobbies! = self.updatedHobbies!.replacingOccurrences(of: hobby, with: "")
+                self.updatedHobbies! = self.updatedHobbies!.replacingOccurrences(of: ",,", with: ",")
+                if self.updatedHobbies!.hasPrefix(",") {
+                    self.updatedHobbies! = String(describing: self.updatedHobbies!.dropFirst())
+                }
                 self.addHobbies()
             }
             actionSheet.addAction(action)
